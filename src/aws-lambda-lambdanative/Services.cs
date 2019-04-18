@@ -7,16 +7,16 @@ namespace aws_lambda_lambdanative
 {
     public class Services
     {
-        private readonly MemberContext _context;
+        private readonly DistrictContext _context;
 
-        public Services(MemberContext context)
+        public Services(DistrictContext context)
         {
             _context = context;
         }
 
-        public ProfileModel Get_Member_Information_By_ID(string id)
+        public List<DistrictModel> List_district()
         {
-            return _context.Members.Where(m => m.Id == int.Parse(id)).FirstOrDefault();
+            return _context.Districts.ToList();
         }
     }
 

@@ -1,8 +1,9 @@
-<Directives>
-    <Application>    
-        <Assembly Name="Microsoft.AspNetCore.Server.Kestrel.Core">
-         <Type Name="Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer" Dynamic="Required All" />
-         <Type Name="Microsoft.AspNetCore.Server.Kestrel.Core.Internal.KestrelServerOptionsSetup" Dynamic="Required All" />
-        </Assembly>
+<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+    <Application>
+        <Assembly Name="Amazon.Lambda.Serialization.Json" Dynamic="Required All" />
+        <Assembly Name="MySql.Data.EntityFrameworkCore" Dynamic="Required All" />
+        <Assembly Name="Microsoft.Extensions.Configuration.FileExtensions" Dynamic="Required All" />
+        <Assembly Name="Microsoft.Extensions.Configuration.EnvironmentVariables" Dynamic="Required All" />
+        <Assembly Name="Amazon.Lambda.APIGatewayEvents" Dynamic="Required All" />
     </Application>
 </Directives>

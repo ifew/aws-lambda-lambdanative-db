@@ -1,27 +1,46 @@
 using Amazon.Lambda.Core;
 using Amazon.Lambda.Serialization.Json;
 using LambdaNative;
+using Amazon.Lambda.APIGatewayEvents;
+using Microsoft.Extensions.DependencyInjection;
+using System.Net;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace aws_lambda_lambdanative
 {
-    public class Function : IHandler<string, respondModel>
+    public class Function : IHandler<APIGatewayProxyRequest, APIGatewayProxyResponse>
     {
-        public ILambdaSerializer Serializer => new JsonSerializer();
+        public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
+        private ServiceProvider _service;
 
-        public respondModel Handle(string name, ILambdaContext context)
+        public Function()
+            : this (Bootstrap.CreateInstance()) {}
+
+        /// <summary>
+        /// Default constructor that Lambda will invoke.
+        /// </summary>
+        public Function(ServiceProvider service)
         {
-            return new respondModel { 
-                    http_code = "200",
-                    http_message = "Success",
-                    body = new HelloModel { 
-                            message = Hello(name) 
-                        }
-                };
+            _service = service;
         }
 
-        public string Hello(string name)
+        public APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            return "Hello, " + name;
+            Services service = _service.GetService<Services>();
+            List<DistrictModel> districts = service.List_district();
+
+            APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
+                StatusCode = (int)HttpStatusCode.OK,
+                Headers = new Dictionary<string, string>
+                { 
+                    { "Content-Type", "application/json" }, 
+                    { "Access-Control-Allow-Origin", "*" } 
+                },
+                Body = JsonConvert.SerializeObject(districts)
+            };
+
+            return respond;
         }
     }
 }

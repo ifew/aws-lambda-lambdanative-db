@@ -6,34 +6,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aws_lambda_lambdanative
 {
-    public class respondModel {
-    public string http_code { get; set; }
-    public string http_message { get; set; }
-    public object body { get; set; }
-}
-
-    public class HelloModel {
-        public string message { get; set; }
-    }
-
-
-    [Table("profiles")]
-    public class ProfileModel
+    [Table("district")]
+    public class DistrictModel
     {
-        [Column("id")]
-        public int Id { get; set; }
+        [Column("district_id")]
+        public int DistrictId { get; set; }
 
-        [Column("lang")]
-        public string Language { get; set; }
+        [Column("code")]
+        public int Code { get; set; }
 
-        [Column("name")]
-        public string Name { get; set; }
+        [Column("title_tha")]
+        public string TitleTha { get; set; }
 
-        [Column("about_us")]
-        public string AboutUs { get; set; }
+        [Column("title_eng")]
+        public string TitleEng { get; set; }
 
-        [Column("add_datetime")]
-        public DateTime AddDatetime { get; set; }
+        [Column("province_id")]
+        public int ProvinceId { get; set; }
 
     }
 

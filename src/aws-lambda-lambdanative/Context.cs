@@ -4,19 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace aws_lambda_lambdanative
 {
-    public class MemberContext : DbContext
+    public class DistrictContext : DbContext
     {
-        public MemberContext(DbContextOptions<MemberContext> dbContextOptions) :
+        public DistrictContext(DbContextOptions<DistrictContext> dbContextOptions) :
             base(dbContextOptions)
         {
         }
 
-        public DbSet<ProfileModel> Members { get; set; }
+        public DbSet<DistrictModel> Districts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProfileModel>()
-                        .HasKey(m => m.Id);
         }
 
     }
