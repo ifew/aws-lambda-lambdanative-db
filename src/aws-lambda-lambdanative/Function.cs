@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace aws_lambda_lambdanative
 {
-    public class Function : IHandler<APIGatewayProxyRequest, APIGatewayProxyResponse>
+    public class Function : IHandler<string, APIGatewayProxyResponse>
     {
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
         private ServiceProvider _service;
@@ -25,7 +25,7 @@ namespace aws_lambda_lambdanative
             _service = service;
         }
 
-        public APIGatewayProxyResponse Handle(APIGatewayProxyRequest request, ILambdaContext context)
+        public APIGatewayProxyResponse Handle(string name, ILambdaContext context)
         {
             Services service = _service.GetService<Services>();
             List<DistrictModel> districts = service.List_district();
