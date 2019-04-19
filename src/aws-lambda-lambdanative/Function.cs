@@ -14,21 +14,21 @@ namespace aws_lambda_lambdanative
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
         private ServiceProvider _service;
 
-        public Function()
-            : this (Bootstrap.CreateInstance()) {}
+        // public Function()
+        //     : this (Bootstrap.CreateInstance()) {}
 
-        /// <summary>
-        /// Default constructor that Lambda will invoke.
-        /// </summary>
-        public Function(ServiceProvider service)
-        {
-            _service = service;
-        }
+        // /// <summary>
+        // /// Default constructor that Lambda will invoke.
+        // /// </summary>
+        // public Function(ServiceProvider service)
+        // {
+        //     _service = service;
+        // }
 
         public APIGatewayProxyResponse Handle(string name, ILambdaContext context)
         {
-            Services service = _service.GetService<Services>();
-            List<DistrictModel> districts = service.List_district();
+            //Services service = _service.GetService<Services>();
+            //List<DistrictModel> districts = service.List_district();
 
             APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
                 StatusCode = (int)HttpStatusCode.OK,
@@ -37,7 +37,7 @@ namespace aws_lambda_lambdanative
                     { "Content-Type", "application/json" }, 
                     { "Access-Control-Allow-Origin", "*" } 
                 },
-                Body = JsonConvert.SerializeObject(districts)
+                Body = "{}" //JsonConvert.SerializeObject(districts)
             };
 
             return respond;
