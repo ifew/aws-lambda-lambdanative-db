@@ -28,15 +28,3 @@ sh build.sh
 cd output
 aws s3 cp package.zip s3://backend-layer [--profile AWS-PROFILE-NAME]
 ```
-
-### Go to lambda page and choose upload via s3 url, runtime: custom, handler: up to you
-
-![Setting](lambdabative-lambdapage-setting.png)
-
-### Try to test
-
-![Testing](lambdabative-lambdapage-test.png)
-
-### Test Result
-
-![Testing](lambdabative-lambdapage-test-result.png)
