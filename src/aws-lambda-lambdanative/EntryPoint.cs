@@ -1,5 +1,5 @@
-﻿using aws_lambda_lambdanative;
-using Amazon.Lambda.APIGatewayEvents;
+﻿using System;
+using aws_lambda_lambdanative;
 
 namespace LambdaNative
 {
@@ -7,7 +7,8 @@ namespace LambdaNative
     {
         public static void Main()
         {
-            LambdaNative.Run<Function, string, APIGatewayProxyResponse>();
+            System.Console.WriteLine(AppDomain.CurrentDomain.GetAssemblies());
+            LambdaNative.Run<Function, string, DistrictModel>();
         }
     }
 }
