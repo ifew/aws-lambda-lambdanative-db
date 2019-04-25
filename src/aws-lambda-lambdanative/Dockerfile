@@ -3,5 +3,6 @@
 
 FROM microsoft/dotnet:2.2-sdk AS build-env
 WORKDIR /app
-RUN apt-get update && apt-get install cmake clang-3.9 libicu-dev uuid-dev libcurl4-openssl-dev zlib1g-dev libkrb5-dev -y
+RUN apt-get update && apt-get install cmake clang-3.9 libunwind-dev libicu-dev uuid-dev libcurl4-openssl-dev zlib1g-dev libkrb5-dev -y
+ENV CppCompilerAndLinker=clang-3.9
 ENTRYPOINT ["dotnet", "publish", "-c", "Release", "-r", "linux-x64"]
