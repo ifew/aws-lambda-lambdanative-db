@@ -4,23 +4,93 @@
     <Assembly Name="LambdaNative" Dynamic="Required All" />
     <Assembly Name="aws-lambda-lambdanative" Dynamic="Required All" />
 
-    <Assembly Name="Microsoft.EntityFrameworkCore" Dynamic="Required All" />
-    <Assembly Name="Microsoft.EntityFrameworkCore.Relational" Dynamic="Required All" />
-    <Assembly Name="Microsoft.EntityFrameworkCore.Abstractions" Dynamic="Required All" />
+<Assembly Name="Microsoft.EntityFrameworkCore">
+            <Type Name="Microsoft.EntityFrameworkCore.Internal.DiagnosticsLogger`1[[Microsoft.EntityFrameworkCore.DbLoggerCategory+Infrastructure,Microsoft.EntityFrameworkCore]]" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Internal.DbSetInitializer" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.DbSet`1[[aws_lambda_lambdanative.DistrictContext,aws-lambda-lambdanative]]" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverterSelector" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.TypeMappingSourceDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Metadata.Internal.ParameterBindingFactories" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Metadata.Internal.ConstructorBindingFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Metadata.Internal.MemberClassifier" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.CoreConventionSetBuilderDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.CoreConventionSetBuilder" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.ModelCustomizerDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.ModelCacheKeyFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.ModelSourceDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.ModelValidatorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.QueryContextDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.ExecutionStrategyDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.CompiledQueryCacheKeyGeneratorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.EntityResultFindingExpressionVisitorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ResultOperatorHandler" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.IIncludableQueryable`2" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.QueryModelGenerator" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.RequiresMaterializationExpressionVisitorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.QueryCompilationContextDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.DatabaseDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ValueGeneration.ValueGeneratorCache" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ValueGeneration.ValueGeneratorSelectorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ValueGeneration.ValueGeneratorSelector" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.Internal.KeyPropagator" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ValueGenerationManager" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Internal.DbContextDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Internal.DbSetSource" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ChangeTracking.ValueComparer`1[[System.Int32,System.Runtime]]" Dynamic="Required All" />
+        </Assembly>
+
+<Assembly Name="Microsoft.EntityFrameworkCore.Relational">
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelCustomizer" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.Internal.RelationalModelSource" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.RelationalConventionSetBuilderDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelValidatorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.Internal.NamedConnectionStringResolver" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.RelationalTransactionFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommandBuilderFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.ParameterNameGeneratorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.Internal.RawSqlCommandBuilder" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.RelationalExecutionStrategyFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalQueryContextFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalCompiledQueryCacheKeyGeneratorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalCompiledQueryCacheKeyGenerator" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.RelationalCompositeExpressionFragmentTranslator" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.RelationalCompositeMethodCallTranslatorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.SqlTranslatingExpressionVisitorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.RelationalProjectionExpressionVisitorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.RelationalProjectionExpressionVisitorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Sql.QuerySqlGeneratorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Expressions.SelectExpressionDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Expressions.SelectExpressionFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.MaterializerFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.RelationalValueBufferFactoryDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.TypedRelationalValueBufferFactoryFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.ShaperCommandContextFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.RelationalEntityQueryableExpressionVisitorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.RelationalEntityQueryableExpressionVisitorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.RelationalEvaluatableExpressionFilter" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.Internal.RelationalResultOperatorHandler" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal.CompositePredicateExpressionVisitorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalQueryModelVisitorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalQueryModelVisitorFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Query.RelationalQueryCompilationContextFactory" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Update.UpdateSqlGeneratorDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseDependencies" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.Storage.RelationalDatabase" Dynamic="Required All" />
+            <Type Name="Microsoft.EntityFrameworkCore.ValueGeneration.RelationalValueGeneratorSelector" Dynamic="Required All" />
+        </Assembly>
+
     <Assembly Name="MySql.Data.EntityFrameworkCore" Dynamic="Required All" />
     <Assembly Name="MySql.Data" Dynamic="Required All" />
-    <Assembly Name="Microsoft.Extensions.Configuration.FileExtensions" Dynamic="Required All" />
-    <Assembly Name="Microsoft.Extensions.Configuration.EnvironmentVariables" Dynamic="Required All" />
-    <Assembly Name="System.Security.Principal.Windows" Dynamic="Required All" />
-    <Assembly Name="System.Security.AccessControl" Dynamic="Required All" />
-    <Assembly Name="System.Security.Cryptography.ProtectedData" Dynamic="Required All" />
-    <Assembly Name="System.Security.Permissions" Dynamic="Required All" />
-    <Assembly Name="System.Text.Encoding.CodePages" Dynamic="Required All" />
-    <Assembly Name="System.Configuration.ConfigurationManager" Dynamic="Required All" />
-    <Assembly Name="Google.Protobuf" Dynamic="Required All" />
-    <Assembly Name="Amazon.Lambda.Core" Dynamic="Required All" />
-    <Assembly Name="Amazon.Lambda.Serialization.Json" Dynamic="Required All" />
-    <Assembly Name="Amazon.Lambda.APIGatewayEvents" Dynamic="Required All" />
+
 
   </Application>
 </Directives>

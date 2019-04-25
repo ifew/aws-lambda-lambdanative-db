@@ -10,7 +10,7 @@ namespace aws_lambda_lambdanative
         {
             return new ServiceCollection()
             .AddDbContext<DistrictContext>(options => options.UseMySQL(LambdaConfiguration.Instance["DB_CONNECTION"]))
-            .AddSingleton<Services, Services>()
+            .AddSingleton<IServices, Services>()
             .BuildServiceProvider();
         }
     }
