@@ -1,26 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
   <Application>
-    <Assembly Name="LambdaNative" Dynamic="Required All" />
     <Assembly Name="aws-lambda-lambdanative" Dynamic="Required All" />
-
-    <Assembly Name="Microsoft.EntityFrameworkCore" Dynamic="Required All" />
-    <Assembly Name="Microsoft.EntityFrameworkCore.Relational" Dynamic="Required All" />
-    <Assembly Name="Microsoft.EntityFrameworkCore.Abstractions" Dynamic="Required All" />
-    <Assembly Name="MySql.Data.EntityFrameworkCore" Dynamic="Required All" />
-    <Assembly Name="MySql.Data" Dynamic="Required All" />
-    <Assembly Name="Microsoft.Extensions.Configuration.FileExtensions" Dynamic="Required All" />
-    <Assembly Name="Microsoft.Extensions.Configuration.EnvironmentVariables" Dynamic="Required All" />
-    <Assembly Name="System.Security.Principal.Windows" Dynamic="Required All" />
-    <Assembly Name="System.Security.AccessControl" Dynamic="Required All" />
-    <Assembly Name="System.Security.Cryptography.ProtectedData" Dynamic="Required All" />
-    <Assembly Name="System.Security.Permissions" Dynamic="Required All" />
-    <Assembly Name="System.Text.Encoding.CodePages" Dynamic="Required All" />
-    <Assembly Name="System.Configuration.ConfigurationManager" Dynamic="Required All" />
-    <Assembly Name="Google.Protobuf" Dynamic="Required All" />
-    <Assembly Name="Amazon.Lambda.Core" Dynamic="Required All" />
-    <Assembly Name="Amazon.Lambda.Serialization.Json" Dynamic="Required All" />
-    <Assembly Name="Amazon.Lambda.APIGatewayEvents" Dynamic="Required All" />
-
   </Application>
 </Directives>
