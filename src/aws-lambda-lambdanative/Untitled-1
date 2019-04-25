@@ -1,0 +1,11 @@
+clang "obj/Release/netcoreapp2.2/osx-x64/native/aws-lambda-lambdanative.o" 
+-o "bin/Release/netcoreapp2.2/osx-x64/native/aws-lambda-lambdanative" 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/sdk/libbootstrapper.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/sdk/libRuntime.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/sdk/libSystem.Private.CoreLib.Native.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/sdk/libSystem.Private.TypeLoader.Native.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/framework/System.Native.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/framework/System.Globalization.Native.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/framework/System.IO.Compression.Native.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/framework/System.Net.Security.Native.a 
+/Users/chitpong/.nuget/packages/runtime.osx-x64.microsoft.dotnet.ilcompiler/1.0.0-alpha-27625-01/framework/System.Security.Cryptography.Native.Apple.a -g -Wl,-rpath,'$ORIGIN' -lstdc++ -ldl -lm -lz -licucore -framework CoreFoundation -framework Security -framework GSS

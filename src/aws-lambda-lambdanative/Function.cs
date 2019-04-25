@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Data;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
-using Amazon.Lambda.Serialization.Json;
 using LambdaNative;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace aws_lambda_lambdanative
@@ -18,9 +15,6 @@ namespace aws_lambda_lambdanative
         public Function()
             : this (Bootstrap.CreateInstance()) {}
 
-        // /// <summary>
-        // /// Default constructor that Lambda will invoke.
-        // /// </summary>
         public Function(ServiceProvider service)
         {
             _service = service;
@@ -33,23 +27,6 @@ namespace aws_lambda_lambdanative
             List<DistrictModel> districts = await service.ListDistrict();
 
             return districts;
-
-            // APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
-            //     StatusCode = (int)HttpStatusCode.OK,
-            //     Headers = new Dictionary<string, string>
-            //     { 
-            //         { "Content-Type", "application/json" }, 
-            //         { "Access-Control-Allow-Origin", "*" } 
-            //     },
-            //     Body = "{}" //JsonConvert.SerializeObject(districts)
-            // };
-            // return new DistrictModel { 
-            //         DistrictId = 1,
-            //         Code = 222,
-            //         TitleEng = "aaaa",
-            //         TitleTha = "กกกฟหกหฟก",
-            //         ProvinceId = 333
-            //     };
         }
 
     }
