@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace aws_lambda_lambdanative
@@ -9,8 +8,8 @@ namespace aws_lambda_lambdanative
         public static ServiceProvider CreateInstance()
         {
             return new ServiceCollection()
-            .AddDbContext<DistrictContext>(options => options.UseMySQL(LambdaConfiguration.Instance["DB_CONNECTION"]))
-            .AddSingleton<IServices, Services>()
+            //.AddDbContext<DistrictContext>(options => options.UseMySQL(LambdaConfiguration.Instance["DB_CONNECTION"]))
+            .AddTransient<IServices, Services>()
             .BuildServiceProvider();
         }
     }

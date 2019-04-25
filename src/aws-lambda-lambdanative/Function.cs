@@ -1,25 +1,26 @@
 using System.Collections.Generic;
-using System.Net;
+using System.Data;
 using System.Threading.Tasks;
-using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.Serialization.Json;
 using LambdaNative;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace aws_lambda_lambdanative
 {
     public class Function : IHandler<string, Task<List<DistrictModel>>>
     {
+
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
         private ServiceProvider _service;
 
         public Function()
             : this (Bootstrap.CreateInstance()) {}
 
-        /// <summary>
-        /// Default constructor that Lambda will invoke.
-        /// </summary>
+        // /// <summary>
+        // /// Default constructor that Lambda will invoke.
+        // /// </summary>
         public Function(ServiceProvider service)
         {
             _service = service;
@@ -27,7 +28,8 @@ namespace aws_lambda_lambdanative
 
         public async Task<List<DistrictModel>> Handle(string name, ILambdaContext context)
         {
-            IServices service = _service.GetService<IServices>();
+
+            Services service = _service.GetService<Services>();
             List<DistrictModel> districts = await service.ListDistrict();
 
             return districts;
@@ -41,7 +43,6 @@ namespace aws_lambda_lambdanative
             //     },
             //     Body = "{}" //JsonConvert.SerializeObject(districts)
             // };
-            
             // return new DistrictModel { 
             //         DistrictId = 1,
             //         Code = 222,
@@ -50,5 +51,6 @@ namespace aws_lambda_lambdanative
             //         ProvinceId = 333
             //     };
         }
+
     }
 }
