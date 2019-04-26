@@ -2,5 +2,6 @@
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
   <Application>
     <Assembly Name="aws-lambda-lambdanative" Dynamic="Required All" />
+    <Assembly Name="Dapper" Dynamic="Required All" />
   </Application>
 </Directives>

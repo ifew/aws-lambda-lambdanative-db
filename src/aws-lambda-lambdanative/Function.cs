@@ -6,6 +6,9 @@ using Amazon.Lambda.Serialization.Json;
 using LambdaNative;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Dapper;
+using MySql.Data.MySqlClient;
+using System.Linq;
 
 namespace aws_lambda_lambdanative
 {
@@ -13,45 +16,19 @@ namespace aws_lambda_lambdanative
     {
 
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
-        private ServiceProvider _service;
 
-        public Function()
-            : this (Bootstrap.CreateInstance()) {}
-
-        // /// <summary>
-        // /// Default constructor that Lambda will invoke.
-        // /// </summary>
-        public Function(ServiceProvider service)
+        public async Task<List<DistrictModel>> Handle(string empty, ILambdaContext context)
         {
-            _service = service;
+            using (MySqlConnection _connection = new MySqlConnection(LambdaConfiguration.Instance["DB_CONNECTION"].ToString()))  
+            {  
+                if (_connection.State == ConnectionState.Closed)  
+                    _connection.Open();  
+  
+                string sqlQuery = "SELECT * FROM district";
+                var result = await _connection.QueryAsync<DistrictModel>(sqlQuery);
+
+                return result.ToList();  
+            } 
         }
-
-        public async Task<List<DistrictModel>> Handle(string name, ILambdaContext context)
-        {
-
-            Services service = _service.GetService<Services>();
-            List<DistrictModel> districts = await service.ListDistrict();
-
-            return districts;
-
-            // APIGatewayProxyResponse respond = new APIGatewayProxyResponse {
-            //     StatusCode = (int)HttpStatusCode.OK,
-            //     Headers = new Dictionary<string, string>
-            //     { 
-            //         { "Content-Type", "application/json" }, 
-            //         { "Access-Control-Allow-Origin", "*" } 
-            //     },
-            //     Body = "{}" //JsonConvert.SerializeObject(districts)
-            // };
-
-            // return new DistrictModel { 
-            //         DistrictId = 1,
-            //         Code = 222,
-            //         TitleEng = "aaaa",
-            //         TitleTha = "กกกฟหกหฟก",
-            //         ProvinceId = 333
-            //     };
-        }
-
     }
 }

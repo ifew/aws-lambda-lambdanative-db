@@ -6,9 +6,9 @@
   "profile":"default",
   "region" : "ap-southeast-1",
   "configuration" : "Release",
-  "framework" : "netcoreapp2.1",
-  "function-runtime":"dotnetcore2.1",
-  "function-memory-size" : 128,
+  "framework" : "provided",
+  "function-runtime":"provided",
+  "function-memory-size" : 256,
   "function-timeout" : 60,
-  "function-handler" : "aws-lambda-function::aws_lambda_function.Function::FunctionHandler"
+  "function-handler" : "provided"
 }

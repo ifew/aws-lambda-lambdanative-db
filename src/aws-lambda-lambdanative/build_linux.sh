@@ -2,12 +2,12 @@
 
 #
 # SHOULD BUILD IMAGE BEFORE
-# docker build -t lambdanative:test .
+# docker build -t lambdanative:3.0 .
 #
 
 rm -f $(pwd)/bootstrap
 rm -f $(pwd)/package.zip
-docker run --rm -v $(pwd):/app lambdanative
-cp bin/Release/netcoreapp2.2/linux-x64/native/aws-lambda-lambdanative bootstrap
+docker run --rm -v $(pwd):/app lambdanative:3.0
+cp bin/Release/netcoreapp3.0/linux-x64/native/aws-lambda-lambdanative bootstrap
 zip package.zip bootstrap
 aws s3 cp package.zip s3://backend-layer --profile sansiri
