@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace aws_lambda_lambdanative
 {
@@ -14,7 +15,7 @@ namespace aws_lambda_lambdanative
             _context = context;
         }
 
-        public List<DistrictModel> List_district()
+        public async Task<List<DistrictModel>> ListDistrict()
         {
             return _context.Districts.ToList();
         }
