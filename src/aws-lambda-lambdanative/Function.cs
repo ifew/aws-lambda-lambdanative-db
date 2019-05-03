@@ -6,36 +6,34 @@ using MySql.Data.MySqlClient;
 
 namespace aws_lambda_lambdanative
 {
-    public class Function : IHandler<string, List<DistrictModel>>
+    public class Function : IHandler<string, List<Member>>
     {
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
 
         public List<DistrictModel> Handle(string name, ILambdaContext context)
         {
-            List<DistrictModel> districts = new List<DistrictModel>();
+            List<Member> members = new List<Member>();
 
             string configDB = Environment.GetEnvironmentVariable("DB_CONNECTION");
             using (var _connection = new MySqlConnection(configDB)) {
                 _connection.Open();
 
-                using (var cmd = new MySqlCommand("SELECT * FROM district", _connection))
+                using (var cmd = new MySqlCommand("SELECT * FROM member", _connection))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        districts.Add(new DistrictModel()
+                        members.Add(new Member()
                         {
-                            District_Id = Convert.ToInt32(reader["district_id"]),
-                            Code = Convert.ToInt32(reader["code"]),
-                            Title_Tha = reader["title_tha"].ToString(),
-                            Title_Eng = reader["title_eng"].ToString(),
-                            Province_Id = Convert.ToInt32(reader["province_id"]),
+                            Id = Convert.ToInt32(reader["id"]),
+                            Firstname = Convert.ToInt32(reader["firstname"]),
+                            Lastname = reader["lastname"].ToString(),
                         });
                     }
                 }
             }
 
-            return districts;
+            return members;
         }
     }
 }

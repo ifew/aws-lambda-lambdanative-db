@@ -7,7 +7,7 @@ namespace LambdaNative
     {
         public static void Main()
         {
-            LambdaNative.Run<Function, string, List<DistrictModel>>();
+            LambdaNative.Run<Function, string, List<Member>>();
         }
     }
 }
