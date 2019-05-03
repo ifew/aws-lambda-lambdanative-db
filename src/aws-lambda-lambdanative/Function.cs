@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Amazon.Lambda.Core;
 using LambdaNative;
 using MySql.Data.MySqlClient;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace aws_lambda_lambdanative
 {
@@ -35,5 +38,20 @@ namespace aws_lambda_lambdanative
 
             return members;
         }
+    }
+
+    [Table("member")]
+    public class Member
+    {
+        [Key]
+        [Column("id")]
+        public int Id { get; set; }
+
+        [Column("firstname")]
+        public string Firstname { get; set; }
+
+        [Column("lastname")]
+        public string Lastname { get; set; }
+
     }
 }
