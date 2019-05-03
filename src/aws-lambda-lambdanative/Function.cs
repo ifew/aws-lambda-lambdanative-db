@@ -10,7 +10,7 @@ namespace aws_lambda_lambdanative
     {
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
 
-        public List<DistrictModel> Handle(string name, ILambdaContext context)
+        public List<Member> Handle(string name, ILambdaContext context)
         {
             List<Member> members = new List<Member>();
 
@@ -26,7 +26,7 @@ namespace aws_lambda_lambdanative
                         members.Add(new Member()
                         {
                             Id = Convert.ToInt32(reader["id"]),
-                            Firstname = Convert.ToInt32(reader["firstname"]),
+                            Firstname =reader["firstname"].ToString(),
                             Lastname = reader["lastname"].ToString(),
                         });
                     }
