@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using aws_lambda_lambdanative;
 
 namespace LambdaNative
@@ -9,7 +7,7 @@ namespace LambdaNative
     {
         public static void Main()
         {
-            LambdaNative.Run<Function, string, Task<List<DistrictModel>>>();
+            LambdaNative.Run<Function, string, List<DistrictModel>>();
         }
     }
 }

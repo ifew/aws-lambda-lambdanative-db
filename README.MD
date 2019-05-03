@@ -1,4 +1,4 @@
-# AWS Lambda Net Core 2 by using CoreRT
+# Example AWS Lambda C# .NET Core 3 (and 2.2) Runtime (CoreRT) with connect MySQL via not using any ORM
 
 Example for optimize cold start with Lambda Native
 
@@ -7,13 +7,10 @@ Example for optimize cold start with Lambda Native
 - https://github.com/dotnet/corert
 - https://github.com/ifew/lambda-native/
 
-## Step to setup
-
-### Run Unit test
+## Test via 
 
 ```bash
-cd test/aws-lambda-lambdanative.Tests
-dotnet test
+docker run --rm -v "$PWD":/var/task lambci/lambda:provided handler ''
 ```
 
 ### Build file and packing to output/package.zip
@@ -25,6 +22,5 @@ sh build.sh
 ### Upload to aws s3
 
 ```bash
-cd output
 aws s3 cp package.zip s3://backend-layer [--profile AWS-PROFILE-NAME]
 ```
