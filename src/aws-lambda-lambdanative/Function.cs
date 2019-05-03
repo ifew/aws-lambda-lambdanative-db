@@ -40,7 +40,7 @@ namespace aws_lambda_lambdanative
         }
     }
 
-    [Table("member")]
+    [Table("test_member")]
     public class Member
     {
         [Key]
