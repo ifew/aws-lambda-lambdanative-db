@@ -7,7 +7,7 @@ namespace LambdaNative
     {
         public static void Main()
         {
-            LambdaNative.Run<Function, string, List<Member>>();
+            LambdaNative.Run<Handler, string, List<Member>>();
         }
     }
 }
