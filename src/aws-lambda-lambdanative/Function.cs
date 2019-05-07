@@ -3,40 +3,56 @@ using System.Collections.Generic;
 using Amazon.Lambda.Core;
 using LambdaNative;
 using MySql.Data.MySqlClient;
+using System.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace aws_lambda_lambdanative
 {
-    public class Function : IHandler<string, List<Member>>
+    public class Handler : IHandler<string, List<Member>>
     {
         public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
 
         public List<Member> Handle(string name, ILambdaContext context)
         {
-            List<Member> members = new List<Member>();
+            Console.WriteLine("Log: Start Connection");
 
             string configDB = Environment.GetEnvironmentVariable("DB_CONNECTION");
-            using (var _connection = new MySqlConnection(configDB)) {
-                _connection.Open();
 
-                using (var cmd = new MySqlCommand("SELECT * FROM member", _connection))
-                using (var reader = cmd.ExecuteReader())
+            using (var _connection = new MySqlConnection(configDB))
+            {
+                Console.WriteLine("Log: _connection.ConnectionString: " + _connection.ConnectionString);
+
+                if (_connection.State == ConnectionState.Closed)
+                    _connection.Open();
+
+                Console.WriteLine("Log: State: " + _connection.State.ToString());
+                Console.WriteLine("Log: DB ServerVersion: " + _connection.ServerVersion);
+
+                using (var cmd = new MySqlCommand("SELECT * FROM test_member", _connection))
                 {
-                    while (reader.Read())
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        members.Add(new Member()
+                        Console.WriteLine("Log: reader.FieldCount: " + reader.FieldCount);
+                        List<Member> members = new List<Member>();
+                        while (reader.Read())
                         {
-                            Id = Convert.ToInt32(reader["id"]),
-                            Firstname =reader["firstname"].ToString(),
-                            Lastname = reader["lastname"].ToString(),
-                        });
+                            members.Add(new Member
+                            {
+                                Id = Convert.ToInt32(reader["id"]),
+                                Firstname = reader["firstname"].ToString(),
+                                Lastname = reader["lastname"].ToString(),
+                            });
+                        }
+
+                        Console.WriteLine("Log: Count: " + members.Count);
+
+                        return members;
                     }
                 }
-            }
 
-            return members;
+            }
         }
     }
 

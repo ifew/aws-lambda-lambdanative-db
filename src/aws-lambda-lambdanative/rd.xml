@@ -1,5 +1,6 @@
 <Directives>
   <Application>
+    <Assembly Name="LambdaNative" Dynamic="Required All" />
     <Assembly Name="aws-lambda-lambdanative" Dynamic="Required All" />
   </Application>
 </Directives>
