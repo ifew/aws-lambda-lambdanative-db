@@ -1,20 +1,7 @@
-# docker build -t lambdanative .
-# docker run --rm -v $(pwd):/app lambdanative
-
-### 2.2
-
-# FROM microsoft/dotnet:2.2-sdk AS build-env
-# WORKDIR /app
-# RUN apt-get update && apt-get install cmake clang-3.9 libunwind-dev libicu-dev uuid-dev libcurl4-openssl-dev zlib1g-dev libkrb5-dev -y
-# ENV CppCompilerAndLinker=clang-3.9
-# ENTRYPOINT ["dotnet", "publish", "-c", "Release", "-r", "linux-x64"]
-
-
-### 3.0
-
 # docker build -t lambdanative:3.0 .
 # docker run --rm -v $(pwd):/app lambdanative
 
+#FROM microsoft/dotnet:2.2-sdk AS build-env
 FROM buildpack-deps:bionic-scm
 
 RUN apt-get update \
@@ -35,15 +22,22 @@ RUN apt-get update \
         zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-ENV DOTNET_SDK_VERSION 3.0.100-preview4-011223
+ENV DOTNET_SDK_VERSION 3.0.100
 
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz \
-    && dotnet_sha512='b416dd4014ad62c7d19413c44738f1cc6152c94570c31dc953be16bfeadecf449b2aab7ecc09c9d3fcd12b2d440f281a0c8f1ad0635bc035adb34c26f8d1e2ae' \
+    && dotnet_sha512='766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6ea1c005d31460dac7c2a4ef82b3edfea30232c82ba301fb52c0ff268d3e3a1b73d8f7' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
     && rm dotnet.tar.gz \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+
+# Enable detection of running in a container
+ENV DOTNET_RUNNING_IN_CONTAINER=true \
+    # Enable correct mode for dotnet watch (only mode supported in a container)
+    DOTNET_USE_POLLING_FILE_WATCHER=true \
+    # Skip extraction of XML docs - generally not useful within an image/container - helps performance
+    NUGET_XMLDOC_MODE=skip
 
 WORKDIR /app
 #RUN apt-get update && apt-get install cmake clang-3.9 libicu-dev uuid-dev libcurl4-openssl-dev zlib1g-dev libkrb5-dev -y
