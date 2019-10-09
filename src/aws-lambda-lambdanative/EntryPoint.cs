@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using aws_lambda_lambdanative;
 
 namespace LambdaNative
@@ -7,7 +8,7 @@ namespace LambdaNative
     {
         public static void Main()
         {
-            LambdaNative.Run<Handler, string, List<Member>>();
+            LambdaNative.Run<Handler, JObject, List<Member>>();
         }
     }
 }

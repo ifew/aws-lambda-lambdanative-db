@@ -1,21 +1,39 @@
 using System;
 using System.Collections.Generic;
 using Amazon.Lambda.Core;
+using Amazon.Lambda.Serialization.Json;
 using LambdaNative;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json.Linq;
 
 
 namespace aws_lambda_lambdanative
 {
-    public class Handler : IHandler<string, List<Member>>
+    public class Handler : IHandler<JObject, List<Member>>
     {
-        public ILambdaSerializer Serializer => new Amazon.Lambda.Serialization.Json.JsonSerializer();
+        public ILambdaSerializer Serializer => new JsonSerializer();
 
-        public List<Member> Handle(string name, ILambdaContext context)
+        public List<Member> Handle(JObject request, ILambdaContext context)
         {
+            string unit_id = null;
+            string lang = "THA";
+            if (request != null) {
+                Console.WriteLine("Log: request: " + request.ToString());
+            }
+            if (request["pathParameters"]["unit_id"] != null)
+            {
+                unit_id = request["pathParameters"]["unit_id"].ToString();
+                Console.WriteLine("Log: Get request.pathParameters - unit_id: " + unit_id);
+            }
+
+            if(request["queryStringParameters"]["lang"] != null) {
+                lang = request["queryStringParameters"]["lang"].ToString();
+                Console.WriteLine("Log: Get request.queryStringParameters - lang: " + lang);
+            }
+
             Console.WriteLine("Log: Start Connection");
 
             string configDB = Environment.GetEnvironmentVariable("DB_CONNECTION");
